@@ -543,7 +543,11 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = _app.initializeApp(firebaseConfig);
 // Creo un listener del formulario de crear usuario nuevo
-const createUserButton = document.getElementById("createUserForm");
+const createUserForm = document.getElementById("createUserForm");
+createUserForm.addEventListener("submit", (e)=>{
+    e.preventDefault();
+    console.log("Usuario Creado");
+});
 
 },{"firebase/app":"5wGMN"}],"5wGMN":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");

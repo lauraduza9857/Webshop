@@ -18,4 +18,8 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 // Creo un listener del formulario de crear usuario nuevo
-const createUserButton = document.getElementById("createUserForm");
+const createUserForm = document.getElementById("createUserForm");
+createUserForm.addEventListener("submit", e =>{
+    e.preventDefault();
+    console.log("Usuario Creado");
+})
