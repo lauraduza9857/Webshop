@@ -2,9 +2,8 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 //Cosas necesarias para realizar la autenticación
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -23,6 +22,9 @@ const auth = getAuth();
 
 // Creo un listener del formulario de crear usuario nuevo
 const createUserForm = document.getElementById("createUserForm");
+
+const loginUserForm = document.getElementById("loginForm");
+
 createUserForm.addEventListener("submit", e =>{
     e.preventDefault();
    // console.log("Usuario Creado");
@@ -35,6 +37,18 @@ createUserForm.addEventListener("submit", e =>{
    createUser(name, username, email, password);
 });
 
+//Listener del formulario de login
+
+loginUserForm.addEventListener("submit", e =>{
+    e.preventDefault();
+    
+    const email = loginUserForm.email.value;
+    const password = loginUserForm.password.value;
+    login(email, password);
+    console.log("login");
+
+});
+
 async function createUser(name,username,email,password){
     try{
     const newUser =await createUserWithEmailAndPassword(auth, email, password);
@@ -42,5 +56,17 @@ async function createUser(name,username,email,password){
     }catch(e){
         console.log(e);
     }
-}
+};
+
+async function login(email, password){
+
+    try{
+
+        const { user }= await signInWithEmailAndPassword(auth, email, password);
+        console.log("ingreso exitoso!");
+
+    }catch(e){
+        console.log(e);
+    }
+};
 

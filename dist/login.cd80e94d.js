@@ -531,8 +531,6 @@ function hmrAcceptRun(bundle, id) {
 var _app = require("firebase/app");
 //Cosas necesarias para realizar la autenticación
 var _auth = require("firebase/auth");
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 // Your web app's Firebase configuration
 const firebaseConfig = {
     apiKey: "AIzaSyCKPHVIa9T5H2VkqAvvj5gE3ljgRlPwPYs",
@@ -548,6 +546,7 @@ const app = _app.initializeApp(firebaseConfig);
 const auth = _auth.getAuth();
 // Creo un listener del formulario de crear usuario nuevo
 const createUserForm = document.getElementById("createUserForm");
+const loginUserForm = document.getElementById("loginForm");
 createUserForm.addEventListener("submit", (e)=>{
     e.preventDefault();
     // console.log("Usuario Creado");
@@ -558,10 +557,26 @@ createUserForm.addEventListener("submit", (e)=>{
     const password = createUserForm.password.value;
     createUser(name, username, email, password);
 });
+//Listener del formulario de login
+loginUserForm.addEventListener("submit", (e)=>{
+    e.preventDefault();
+    const email = loginUserForm.email.value;
+    const password = loginUserForm.password.value;
+    login(email, password);
+    console.log("login");
+});
 async function createUser(name, username, email, password) {
     try {
         const newUser = await _auth.createUserWithEmailAndPassword(auth, email, password);
         console.log(newUser);
+    } catch (e) {
+        console.log(e);
+    }
+}
+async function login(email, password) {
+    try {
+        const { user  } = await _auth.signInWithEmailAndPassword(auth, email, password);
+        console.log("ingreso exitoso!");
     } catch (e) {
         console.log(e);
     }
