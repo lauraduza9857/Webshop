@@ -1,11 +1,16 @@
 #singUpBox {
     width: 650px;
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     /*text-align: center;*/
     /*justify-content: center;*/
   }
 
-
+  @media screen and (max-width: 480px) {
+    #singUpBox{
+      grid-template-columns: 1fr;
+    }
+  }
   div{
       padding: 1em;;
   }
@@ -15,7 +20,7 @@
     padding: 0;
     margin: 0;
   }
-  
+
   input[type=submit] {
     padding: 12px 20px;
   }

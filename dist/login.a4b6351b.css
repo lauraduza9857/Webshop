@@ -1,6 +1,13 @@
 #singUpBox {
   width: 650px;
-  display: flex;
+  grid-template-columns: 1fr 1fr;
+  display: grid;
+}
+
+@media screen and (max-width: 480px) {
+  #singUpBox {
+    grid-template-columns: 1fr;
+  }
 }
 
 div {

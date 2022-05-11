@@ -54,7 +54,7 @@ async function createUser(name,username,email,password){
     const newUser =await createUserWithEmailAndPassword(auth, email, password);
     console.log(newUser);
     alert("Usuario registrado exitosamente");
-    window.location.replace("../shop.html");
+    window.location.replace("./shop.html");
     }catch(e){
         console.log(e);
         if(e.code === "auth/weak-password"){
@@ -70,7 +70,7 @@ async function login(email, password){
 
         const { user }= await signInWithEmailAndPassword(auth, email, password);
         alert("ingreso exitoso, bienvenidx!");
-        window.location.replace("../shop.html");
+        window.location.replace("./shop.html");
 
     }catch(e){
         console.log(e);

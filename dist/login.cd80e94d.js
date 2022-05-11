@@ -570,7 +570,7 @@ async function createUser(name, username, email, password) {
         const newUser = await _auth.createUserWithEmailAndPassword(auth, email, password);
         console.log(newUser);
         alert("Usuario registrado exitosamente");
-        window.location.replace("../shop.html");
+        window.location.replace("./shop.html");
     } catch (e) {
         console.log(e);
         if (e.code === "auth/weak-password") alert("La contraseña debe contener por lo menos 6 letras o números");
@@ -580,7 +580,7 @@ async function login(email, password) {
     try {
         const { user  } = await _auth.signInWithEmailAndPassword(auth, email, password);
         alert("ingreso exitoso, bienvenidx!");
-        window.location.replace("../shop.html");
+        window.location.replace("./shop.html");
     } catch (e) {
         console.log(e);
         if (e.code === "auth/wrong-password") alert("contraseña Incorrecta");
