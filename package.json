@@ -10,6 +10,7 @@
     "parcel": "^2.5.0"
   },
   "scripts": {
+    "dev": "parcel ./login.html",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
