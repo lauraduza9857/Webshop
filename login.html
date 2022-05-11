@@ -4,37 +4,45 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iniciar Sección</title>
+    <link rel="stylesheet" href="./src/styles/forms.css">
+    <title>Iniciar Sesión</title>
 </head>
 <body>
     <!--Creamos el formulario de registro-->
     <div id="singupbox"> 
         <div id="imagesingup">
                 <!--aquí va la imagen entonces carga -->
+                <img src="img/form1.png"> 
         </div>
         <div>
-            <form>
-                <input type="text" placeholder="Name" name="name">
-                <input type="text" placeholder="LastName" name="lastname">
-                <input type="email" placeholder="Email" name="email">
-                <input type="password" placeholder="Password" name="password">
-                <label><input type="checkbox" id="termandcondition" value="termandcondition"> Acepto Términos y Condiciones</label>
-                <input type="submit" value="Continue">
+            <form id="createUserForm">
+                <!--Los <ul> y <li> me sirven para organizar el formulario en filas y columnas para luego darle estilos -->
+                <ul>
+                    <li><input type="text" placeholder="Name" name="name"></li>
+                    <li><input type="text" placeholder="LastName" name="lastName"></li>
+                    <li><input type="email" placeholder="Email" name="email"></li>
+                    <li><input type="password" placeholder="Password" name="password"></li>
+                    <li><label><input type="checkbox" id="termandcondition" value="termsAndConditions"> Accept Terms and Conditions</label></li>
+                    <li><input type="submit" value="Continue"></li>
+                </ul>
             </form>
         </div>
     </div>
 
     <!--Creamos el formulario de Inicio de sección-->
 
-    <div id="singupbox"> 
-        <div id="imagesingin">
+    <div id="singUpBox"> 
+        <div id="imageSingIn">
                 <!--aquí va la imagen2 entonces carga -->
+                <img src="img/form2.png"> 
         </div>
         <div>
             <form>
-                <input type="text" placeholder="Name or Email Address" name="nameoremail">
-                <input type="password" placeholder="Password" name="password">
-                <input type="submit" value="Sing In">
+                <ul>
+                    <li><input type="text" placeholder="Name or Email Address" name="nameorEmail"></li>
+                    <li><input type="password" placeholder="Password" name="password"></li>
+                    <li><input type="submit" value="Sing In"></li>
+                </ul>
             </form>
         </div>
     </div>
