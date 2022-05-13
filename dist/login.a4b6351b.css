@@ -7,7 +7,7 @@
 }
 
 #createUserForm {
-  padding-left: 1em;
+  padding-left: 3em;
 }
 
 @media screen and (max-width: 480px) {
@@ -57,6 +57,12 @@ input {
   font-size: 2em;
 }
 
+.logo {
+  width: 20em;
+  height: auto;
+  padding-top: 5em;
+}
+
 .imgSignUp {
   width: 65em;
   height: 100%;
@@ -65,10 +71,6 @@ input {
 .imgSignin {
   width: 45em;
   height: 100%;
-}
-
-#loginForm {
-  padding-top: 10em;
 }
 
 /*# sourceMappingURL=login.a4b6351b.css.map */
