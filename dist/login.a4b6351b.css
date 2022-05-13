@@ -1,6 +1,8 @@
-#singUpBox {
-  width: 650px;
-  grid-template-columns: 1fr 1fr;
+#loginBox {
+  width: 83em;
+  height: 100%;
+  text-align: center;
+  grid-template-columns: repeat(2, 1fr);
   display: grid;
 }
 
@@ -21,21 +23,42 @@ ul {
 }
 
 input[type="submit"] {
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  background-color: #c5c5c5;
+  border-radius: 1em;
   padding: 12px 20px;
+}
+
+label {
+  padding-top: 1em;
+  font-size: 1.5em;
+}
+
+#termandcondition {
+  padding-top: .5em;
 }
 
 input {
   color: #000;
   box-sizing: border-box;
   resize: vertical;
+  padding: 2.8em .4em 1em;
+  padding-bottom: initial;
+  text-align: left;
   border: none;
   border-bottom: 1px solid #000;
-  padding: 1em .5em .5em;
+  font-size: 2em;
 }
 
 img {
-  width: 21em;
+  width: 65em;
   height: 100%;
+}
+
+#loginForm {
+  padding-top: 10em;
 }
 
 /*# sourceMappingURL=login.a4b6351b.css.map */
