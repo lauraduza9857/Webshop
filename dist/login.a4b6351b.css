@@ -6,6 +6,10 @@
   display: grid;
 }
 
+#createUserForm {
+  padding-left: 1em;
+}
+
 @media screen and (max-width: 480px) {
   #singUpBox {
     grid-template-columns: 1fr;
@@ -27,6 +31,7 @@ input[type="submit"] {
   text-align: center;
   color: #fff;
   background-color: #c5c5c5;
+  border-color: gray;
   border-radius: 1em;
   padding: 12px 20px;
 }
@@ -47,13 +52,18 @@ input {
   padding: 2.8em .4em 1em;
   padding-bottom: initial;
   text-align: left;
-  border: none;
-  border-bottom: 1px solid #000;
+  border: #7575c8;
+  border-bottom: 3px solid #7575c8;
   font-size: 2em;
 }
 
-img {
+.imgSignUp {
   width: 65em;
+  height: 100%;
+}
+
+.imgSignin {
+  width: 45em;
   height: 100%;
 }
 

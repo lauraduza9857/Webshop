@@ -8,6 +8,11 @@
     
   }
 
+  #createUserForm{
+
+    padding-left: 1em;
+  }
+
   @media screen and (max-width: 480px) {
     #singUpBox{
       grid-template-columns: 1fr;
@@ -30,6 +35,7 @@
     text-align: center;
     background-color: #c5c5c5;
     color:white;
+    border-color: gray;
   }
 
   label{
@@ -49,16 +55,28 @@
     padding-top: 0.8em;
     box-sizing: border-box;
     resize: vertical;
-    border-bottom: 1px solid #000;
+    border-bottom: 3px solid #000;
+    border-color: #7575C8;
     padding: 2.8em 0.4em 1em;
     padding-bottom: initial;
     text-align: left;
     font-size: 2em;
 
   }
-  img{
+
+  .logo{
+    
+  }
+
+  .imgSignUp{
 
     width: 65em;
+    height: 100%;
+  }
+
+  .imgSignin{
+
+    width: 45em;
     height: 100%;
   }
 
