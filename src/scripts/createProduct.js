@@ -6,6 +6,8 @@ import { getFirestore } from "firebase/firestore";
 
 import firebaseConfig from "../utils/firebase";
 
+import { addProduct } from "./functions/addProduct";
+
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
@@ -33,5 +35,7 @@ createProductForm.addEventListener("submit", (e) => {
     images,
   };
 
-  console.log(newProduct);
+  addProduct (newProduct);
+
+  console.log(db, newProduct);
 });
