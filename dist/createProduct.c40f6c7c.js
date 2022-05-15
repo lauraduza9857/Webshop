@@ -534,29 +534,35 @@ var _auth = require("firebase/auth");
 var _firestore = require("firebase/firestore");
 var _firebase = require("../utils/firebase");
 var _firebaseDefault = parcelHelpers.interopDefault(_firebase);
+var _addProduct = require("./functions/addProduct");
 // Initialize Firebase
 const app = _app.initializeApp(_firebaseDefault.default);
 const db = _firestore.getFirestore(app);
 //Seleccionamos el Formulario de createProduct a trves de js
 const createProductForm = document.getElementById("createProductForm");
-createProductForm.addEventListener("submit", (e)=>{
+createProductForm.addEventListener("submit", async (e)=>{
     e.preventDefault();
-    console.log("Create a new product");
+    //console.log("Create a new product");
     const name = createProductForm.name.value;
     const description = createProductForm.description.value;
     const category = createProductForm.category.value;
-    const images = createProductForm.category.fileokis;
-    //Creamos un objeto con toda la información recogida
+    const images = createProductForm.images.files;
+    /*
+  if (images.length){
+    //Subir Imagen al Firestore
+    await uploadImages(images);
+    }*/ //Creamos un objeto con toda la información recogida
     const newProduct = {
         name,
         description,
         category,
         images
     };
+    await _addProduct.addProduct(db, newProduct);
     console.log(newProduct);
 });
 
-},{"firebase/app":"5wGMN","firebase/auth":"drt1f","firebase/firestore":"cJafS","../utils/firebase":"bYU7u","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"5wGMN":[function(require,module,exports) {
+},{"firebase/app":"5wGMN","firebase/auth":"drt1f","firebase/firestore":"cJafS","../utils/firebase":"bYU7u","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./functions/addProduct":"gX8CV"}],"5wGMN":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _app = require("@firebase/app");
@@ -33529,6 +33535,30 @@ const firebaseConfig = {
 };
 exports.default = firebaseConfig;
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["ariu3","43ZTx"], "43ZTx", "parcelRequire7390")
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gX8CV":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "addProduct", ()=>addProduct
+);
+parcelHelpers.export(exports, "uploadImages", ()=>uploadImages
+);
+var _firestore = require("firebase/firestore");
+var _firebase = require("../../utils/firebase");
+var _firebaseDefault = parcelHelpers.interopDefault(_firebase);
+var _app = require("firebase/app");
+/*const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);*/ async function addProduct(db, product) {
+    try {
+        await _firestore.addDoc(_firestore.collection(db, "products"), product);
+        console.log("Producto creado en la base de datos");
+    } catch (e) {
+        console.log(e);
+    }
+}
+async function uploadImages(images = []) {
+    console.log(images);
+}
+
+},{"firebase/firestore":"cJafS","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","firebase/app":"5wGMN","../../utils/firebase":"bYU7u"}]},["ariu3","43ZTx"], "43ZTx", "parcelRequire7390")
 
 //# sourceMappingURL=createProduct.c40f6c7c.js.map
