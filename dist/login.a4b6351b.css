@@ -11,7 +11,7 @@
 }
 
 @media screen and (max-width: 480px) {
-  #singUpBox {
+  #loginBox {
     grid-template-columns: 1fr;
   }
 }
@@ -64,7 +64,7 @@ input {
 }
 
 .imgSignUp {
-  width: 65em;
+  max-width: 50em;
   height: 100%;
 }
 

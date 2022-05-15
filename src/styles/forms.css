@@ -4,6 +4,8 @@
     height: 100%;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    /*display: flex;
+    flex-wrap: wrap;*/
     text-align: center;
     
   }
@@ -14,7 +16,7 @@
   }
 
   @media screen and (max-width: 480px) {
-    #singUpBox{
+    #loginBox{
       grid-template-columns: 1fr;
     }
   }
@@ -72,7 +74,7 @@
 
   .imgSignUp{
 
-    width: 65em;
+    max-width: 50em;
     height: 100%;
   }
 

@@ -531,6 +531,8 @@ function hmrAcceptRun(bundle, id) {
 var _app = require("firebase/app");
 //Cosas necesarias para realizar la autenticación
 var _auth = require("firebase/auth");
+//Importo funciones desde auth
+var _auth1 = require("./auth");
 // Your web app's Firebase configuration
 const firebaseConfig = {
     apiKey: "AIzaSyCKPHVIa9T5H2VkqAvvj5gE3ljgRlPwPYs",
@@ -555,40 +557,18 @@ createUserForm.addEventListener("submit", (e)=>{
     const username = createUserForm.username.value;
     const email = createUserForm.email.value;
     const password = createUserForm.password.value;
-    createUser(name, username, email, password);
+    _auth1.createUser(name, username, email, password);
 });
 //Listener del formulario de login
 loginUserForm.addEventListener("submit", (e)=>{
     e.preventDefault();
     const email = loginUserForm.email.value;
     const password = loginUserForm.password.value;
-    login(email, password);
+    _auth1.login(email, password);
     console.log("login");
 });
-async function createUser(name, username, email, password) {
-    try {
-        const newUser = await _auth.createUserWithEmailAndPassword(auth, email, password);
-        console.log(newUser);
-        alert("Usuario registrado exitosamente");
-        window.location.replace("./shop.html");
-    } catch (e) {
-        console.log(e);
-        if (e.code === "auth/weak-password") alert("La contraseña debe contener por lo menos 6 letras o números");
-    }
-}
-async function login(email, password) {
-    try {
-        const { user  } = await _auth.signInWithEmailAndPassword(auth, email, password);
-        alert("ingreso exitoso, bienvenidx!");
-        window.location.replace("./shop.html");
-    } catch (e) {
-        console.log(e);
-        if (e.code === "auth/wrong-password") alert("contraseña Incorrecta");
-        if (e.code === "auth/user-not-found") alert("Este usuario no se encuentra en la base de datos");
-    }
-}
 
-},{"firebase/app":"5wGMN","firebase/auth":"drt1f"}],"5wGMN":[function(require,module,exports) {
+},{"firebase/app":"5wGMN","firebase/auth":"drt1f","./auth":"9GWoQ"}],"5wGMN":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _app = require("@firebase/app");
@@ -13090,6 +13070,36 @@ var version = "0.20.1";
 }
 registerAuth("Browser" /* BROWSER */ );
 
-},{"@firebase/util":"ePiK6","@firebase/app":"3AcPV","tslib":"lRdW5","@firebase/logger":"fZmft","@firebase/component":"bi1VB","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["1owu8","1lS3a"], "1lS3a", "parcelRequire7390")
+},{"@firebase/util":"ePiK6","@firebase/app":"3AcPV","tslib":"lRdW5","@firebase/logger":"fZmft","@firebase/component":"bi1VB","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"9GWoQ":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "login", ()=>login
+);
+parcelHelpers.export(exports, "createUser", ()=>createUser
+);
+async function createUser(name, username, email, password) {
+    try {
+        const newUser = await createUserWithEmailAndPassword(auth, email, password);
+        console.log(newUser);
+        alert("Usuario registrado exitosamente");
+        window.location.replace("./shop.html");
+    } catch (e) {
+        console.log(e);
+        if (e.code === "auth/weak-password") alert("La contraseña debe contener por lo menos 6 letras o números");
+    }
+}
+async function login(email, password) {
+    try {
+        const { user  } = await signInWithEmailAndPassword(auth, email, password);
+        alert("ingreso exitoso, bienvenidx!");
+        window.location.replace("./shop.html");
+    } catch (e) {
+        console.log(e);
+        if (e.code === "auth/wrong-password") alert("contraseña Incorrecta");
+        if (e.code === "auth/user-not-found") alert("Este usuario no se encuentra en la base de datos");
+    }
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["1owu8","1lS3a"], "1lS3a", "parcelRequire7390")
 
 //# sourceMappingURL=login.cd80e94d.js.map
