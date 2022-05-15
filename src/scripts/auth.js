@@ -1,9 +1,17 @@
-async function createUser(name,username,email,password){
+import { async } from "@firebase/util";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { doc, setDoc } from "firebase/firestore";
+
+async function createUser(auth,{email,password}){
     try{
-    const newUser =await createUserWithEmailAndPassword(auth, email, password);
-    console.log(newUser);
-    alert("Usuario registrado exitosamente");
-    window.location.replace("./shop.html");
+    const { user } =await createUserWithEmailAndPassword(auth, email, password);
+    return user;
+
+    //adicionar información de usuario
+
+
+    //alert("Usuario registrado exitosamente");
+    //window.location.replace("./shop.html");
     }catch(e){
         console.log(e);
         if(e.code === "auth/weak-password"){
@@ -13,13 +21,13 @@ async function createUser(name,username,email,password){
     }
 };
 
-async function login(email, password){
+async function login(auth, email, password){
 
     try{
 
         const { user }= await signInWithEmailAndPassword(auth, email, password);
-        alert("ingreso exitoso, bienvenidx!");
-        window.location.replace("./shop.html");
+        //alert("ingreso exitoso, bienvenidx!");
+        //window.location.replace("./shop.html");
 
     }catch(e){
         console.log(e);
@@ -33,7 +41,16 @@ async function login(email, password){
     }
 };
 
+async function addUserInformationDb(db, userId, userInfo){
+    try{
+    await setDoc(doc(db, "users", userId), userInfo);
+    }catch(e){
+        console.log(e);
+    }
+}
+
 export{
     login,
-    createUser
+    createUser,
+    addUserInformationDb
 }
