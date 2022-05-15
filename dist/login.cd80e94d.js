@@ -571,7 +571,8 @@ createUserForm.addEventListener("submit", async (e)=>{
     await _auth1.addUserInformationDb(db, userCreated.uid, newUser);
     alert("Usuario registrado exitosamente");
     alert(`bienvenido, ${name}`);
-    console.log(userCreated);
+    location.href = "./shop.html";
+//console.log(userCreated);
 });
 //Listener del formulario de login
 loginUserForm.addEventListener("submit", (e)=>{
