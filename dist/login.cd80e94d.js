@@ -587,7 +587,7 @@ loginUserForm.addEventListener("submit", (e)=>{
     else location.href = "./shop.html";
 });
 
-},{"firebase/app":"5wGMN","firebase/auth":"drt1f","./auth":"9GWoQ","firebase/firestore":"cJafS"}],"5wGMN":[function(require,module,exports) {
+},{"firebase/app":"5wGMN","firebase/auth":"drt1f","firebase/firestore":"cJafS","./auth":"9GWoQ"}],"5wGMN":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _app = require("@firebase/app");
@@ -13089,50 +13089,7 @@ var version = "0.20.1";
 }
 registerAuth("Browser" /* BROWSER */ );
 
-},{"@firebase/util":"ePiK6","@firebase/app":"3AcPV","tslib":"lRdW5","@firebase/logger":"fZmft","@firebase/component":"bi1VB","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"9GWoQ":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "login", ()=>login
-);
-parcelHelpers.export(exports, "createUser", ()=>createUser
-);
-parcelHelpers.export(exports, "addUserInformationDb", ()=>addUserInformationDb
-);
-var _util = require("@firebase/util");
-var _auth = require("firebase/auth");
-var _firestore = require("firebase/firestore");
-async function createUser(auth, { email , password  }) {
-    try {
-        const { user  } = await _auth.createUserWithEmailAndPassword(auth, email, password);
-        return user;
-    //adicionar información de usuario
-    //alert("Usuario registrado exitosamente");
-    //window.location.replace("./shop.html");
-    } catch (e) {
-        console.log(e);
-        if (e.code === "auth/weak-password") alert("La contraseña debe contener por lo menos 6 letras o números");
-    }
-}
-async function login(auth, email, password) {
-    try {
-        const { user  } = await _auth.signInWithEmailAndPassword(auth, email, password);
-    //alert("ingreso exitoso, bienvenidx!");
-    //window.location.replace("./shop.html");
-    } catch (e) {
-        console.log(e);
-        if (e.code === "auth/wrong-password") alert("contraseña Incorrecta");
-        if (e.code === "auth/user-not-found") alert("Este usuario no se encuentra en la base de datos");
-    }
-}
-async function addUserInformationDb(db, userId, userInfo) {
-    try {
-        await _firestore.setDoc(_firestore.doc(db, "users", userId), userInfo);
-    } catch (e) {
-        console.log(e);
-    }
-}
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","firebase/auth":"drt1f","@firebase/util":"ePiK6","firebase/firestore":"cJafS"}],"cJafS":[function(require,module,exports) {
+},{"@firebase/util":"ePiK6","@firebase/app":"3AcPV","tslib":"lRdW5","@firebase/logger":"fZmft","@firebase/component":"bi1VB","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"cJafS":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _firestore = require("@firebase/firestore");
@@ -33589,6 +33546,49 @@ process.umask = function() {
     return 0;
 };
 
-},{}]},["1owu8","1lS3a"], "1lS3a", "parcelRequire7390")
+},{}],"9GWoQ":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "login", ()=>login
+);
+parcelHelpers.export(exports, "createUser", ()=>createUser
+);
+parcelHelpers.export(exports, "addUserInformationDb", ()=>addUserInformationDb
+);
+var _util = require("@firebase/util");
+var _auth = require("firebase/auth");
+var _firestore = require("firebase/firestore");
+async function createUser(auth, { email , password  }) {
+    try {
+        const { user  } = await _auth.createUserWithEmailAndPassword(auth, email, password);
+        return user;
+    //adicionar información de usuario
+    //alert("Usuario registrado exitosamente");
+    //window.location.replace("./shop.html");
+    } catch (e) {
+        console.log(e);
+        if (e.code === "auth/weak-password") alert("La contraseña debe contener por lo menos 6 letras o números");
+    }
+}
+async function login(auth, email, password) {
+    try {
+        const { user  } = await _auth.signInWithEmailAndPassword(auth, email, password);
+    //alert("ingreso exitoso, bienvenidx!");
+    //window.location.replace("./shop.html");
+    } catch (e) {
+        console.log(e);
+        if (e.code === "auth/wrong-password") alert("contraseña Incorrecta");
+        if (e.code === "auth/user-not-found") alert("Este usuario no se encuentra en la base de datos");
+    }
+}
+async function addUserInformationDb(db, userId, userInfo) {
+    try {
+        await _firestore.setDoc(_firestore.doc(db, "users", userId), userInfo);
+    } catch (e) {
+        console.log(e);
+    }
+}
+
+},{"@firebase/util":"ePiK6","firebase/auth":"drt1f","firebase/firestore":"cJafS","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["1owu8","1lS3a"], "1lS3a", "parcelRequire7390")
 
 //# sourceMappingURL=login.cd80e94d.js.map
