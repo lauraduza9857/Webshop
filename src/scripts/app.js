@@ -1,27 +1,10 @@
-//Aqui va a quedar la conexión de firebase
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-//Cosas necesarias para realizar la autenticación
-import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-} from "firebase/auth";
-//Para la Base de datos
-import { getFirestore } from "firebase/firestore";
+import {app, auth, db, storage } from "./general";
 
 //Importo funciones desde auth
 import { login, createUser, addUserInformationDb } from "./auth";
 
-import firebaseConfig from "../utils/firebase";
 
 
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-//constante para la autenticación
-const auth = getAuth();
-const db = getFirestore(app);
 
 // Creo un listener del formulario de crear usuario nuevo
 const createUserForm = document.getElementById("createUserForm");

@@ -1,19 +1,8 @@
-import { initializeApp } from "firebase/app";
-//Cosas necesarias para realizar la autenticación
-import { getAuth } from "firebase/auth";
-//Para la Base de datos
-import { getFirestore } from "firebase/firestore";
-
-import { getStorage } from "firebase/storage";
-
-import firebaseConfig from "../utils/firebase";
+import {app, auth, db, storage} from "./general";
 
 import { addProduct, uploadImages } from "./functions/addProduct";
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-const storage = getStorage(app);
+
 
 //console.log(storage);
 
@@ -27,6 +16,7 @@ createProductForm.addEventListener("submit", async (e) => {
   const name = createProductForm.name.value;
   const description = createProductForm.description.value;
   const category = createProductForm.category.value;
+  const price = createProductForm.price.value;
   const images = createProductForm.images.files;
 
   let gallery = [];
@@ -45,6 +35,7 @@ createProductForm.addEventListener("submit", async (e) => {
     name,
     description,
     category,
+    price,
     images: gallery,
   };
 
