@@ -1,11 +1,5 @@
 import { addDoc, collection } from "firebase/firestore";
-//cómo no me quería dar tuve que importar de nuevo aqui
-import { getFirestore } from "firebase/firestore";
-import firebaseConfig from "../../utils/firebase";
-import { initializeApp } from "firebase/app";
-
-/*const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);*/
+import { ref, uploadBytes, getDownloadURL  } from "firebase/storage";
 
 
 async function addProduct(db, product) {
@@ -16,7 +10,21 @@ async function addProduct(db, product) {
     console.log(e);
   }
 }
-async function uploadImages(images = []) {
+
+async function imageUploadReference(storage, image){
+
+    const storageRef = ref(storage, `products/images/${image.name}`);
+    return await uploadBytes(storageRef, image);
+}
+
+async function uploadImages(storage, images = []) {
   console.log(images);
+    const uploadedImages =  images.map(async (image) => { 
+
+        const imageReference = await imageUploadReference(storage, image);
+        return getDownloadURL(ref(storage, imageReference.ref.fullPath));
+    });
+
+    console.log(uploadedImages);
 }
 export { addProduct, uploadImages };

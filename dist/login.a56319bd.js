@@ -33595,7 +33595,14 @@ const firebaseConfig = {
     messagingSenderId: "61986115608",
     appId: "1:61986115608:web:f844e941fbcad17f17b36d"
 };
-exports.default = firebaseConfig;
+/*const firebaseConfig = {
+    apiKey: "AIzaSyDyFIvzgNT-05MzBqkbsdwUIQhVl3883Z0",
+    authDomain: "web-shop2.firebaseapp.com",
+    projectId: "web-shop2",
+    storageBucket: "web-shop2.appspot.com",
+    messagingSenderId: "702220475403",
+    appId: "1:702220475403:web:afa4bbe20a5246dda37b0e"
+  };*/ exports.default = firebaseConfig;
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["7Nluk","bAabt"], "bAabt", "parcelRequire7390")
 
