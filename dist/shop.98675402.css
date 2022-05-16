@@ -1,0 +1,14 @@
+.product {
+  width: 200px;
+}
+
+.product__image {
+  width: 100%;
+  height: auto;
+}
+
+.product__info {
+  padding: 10px;
+}
+
+/*# sourceMappingURL=shop.98675402.css.map */

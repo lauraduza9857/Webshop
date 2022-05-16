@@ -33559,6 +33559,7 @@ parcelHelpers.export(exports, "uploadImages", ()=>uploadImages
 );
 var _firestore = require("firebase/firestore");
 var _storage = require("firebase/storage");
+//Funcion para agregar productos a la base de datos
 async function addProduct(db, product) {
     try {
         await _firestore.addDoc(_firestore.collection(db, "products"), product);
@@ -33567,6 +33568,7 @@ async function addProduct(db, product) {
         console.log(e);
     }
 }
+//Subir las imagenes al storage
 async function imageUploadReference(storage, image) {
     const storageRef = _storage.ref(storage, `products/images/${image.name}`);
     return await _storage.uploadBytes(storageRef, image);

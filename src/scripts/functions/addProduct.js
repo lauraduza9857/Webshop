@@ -1,7 +1,7 @@
 import { addDoc, collection } from "firebase/firestore";
 import { ref, uploadBytes, getDownloadURL  } from "firebase/storage";
 
-
+//Funcion para agregar productos a la base de datos
 async function addProduct(db, product) {
   try {
     await addDoc(collection(db, "products"), product);
@@ -10,7 +10,7 @@ async function addProduct(db, product) {
     console.log(e);
   }
 }
-
+//Subir las imagenes al storage
 async function imageUploadReference(storage, image){
 
     const storageRef = ref(storage, `products/images/${image.name}`);

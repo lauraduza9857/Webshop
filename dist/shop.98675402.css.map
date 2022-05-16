@@ -1,0 +1,1 @@
+{"mappings":"AAAA;;;;AAIA;;;;;AAIA","sources":["src/styles/shop.css"],"sourcesContent":[".product{\r\n    width: 200px;\r\n}\r\n\r\n.product__image{\r\n    width: 100%;\r\n    height: auto;\r\n}\r\n.product__info{\r\n    padding: 10px;\r\n\r\n}"],"names":[],"version":3,"file":"shop.98675402.css.map","sourceRoot":"/__parcel_source_root/"}
