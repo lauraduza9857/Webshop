@@ -10,12 +10,10 @@ import firebaseConfig from "../utils/firebase";
 
 import { addProduct, uploadImages } from "./functions/addProduct";
 
-
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const storage = getStorage(app);
-
 
 //console.log(storage);
 
@@ -31,13 +29,15 @@ createProductForm.addEventListener("submit", async (e) => {
   const category = createProductForm.category.value;
   const images = createProductForm.images.files;
 
-  if (images.length){
+  let gallery = [];
+
+  if (images.length) {
     //Subir Imagen al Firestore
     const uploadedImages = await uploadImages(storage, [...images]);
-    }
+    gallery = await Promise.all(uploadedImages);
+  }
 
-   
-
+ // console.log(uploadedImages);
 
   //Creamos un objeto con toda la información recogida
 
@@ -45,10 +45,10 @@ createProductForm.addEventListener("submit", async (e) => {
     name,
     description,
     category,
-    //images
+    images: gallery,
   };
 
-  await addProduct (db, newProduct);
+  await addProduct(db, newProduct);
 
   console.log(newProduct);
 });

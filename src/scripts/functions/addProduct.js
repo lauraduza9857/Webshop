@@ -25,6 +25,8 @@ async function uploadImages(storage, images = []) {
         return getDownloadURL(ref(storage, imageReference.ref.fullPath));
     });
 
-    console.log(uploadedImages);
+    //console.log(uploadedImages);
+
+    return uploadedImages;
 }
 export { addProduct, uploadImages };

@@ -550,17 +550,21 @@ createProductForm.addEventListener("submit", async (e)=>{
     const description = createProductForm.description.value;
     const category = createProductForm.category.value;
     const images = createProductForm.images.files;
+    let gallery = [];
     if (images.length) {
         //Subir Imagen al Firestore
         const uploadedImages = await _addProduct.uploadImages(storage, [
             ...images
         ]);
+        gallery = await Promise.all(uploadedImages);
     }
+    // console.log(uploadedImages);
     //Creamos un objeto con toda la información recogida
     const newProduct = {
         name,
         description,
-        category
+        category,
+        images: gallery
     };
     await _addProduct.addProduct(db, newProduct);
     console.log(newProduct);
@@ -33573,7 +33577,8 @@ async function uploadImages(storage, images = []) {
         const imageReference = await imageUploadReference(storage, image);
         return _storage.getDownloadURL(_storage.ref(storage, imageReference.ref.fullPath));
     });
-    console.log(uploadedImages);
+    //console.log(uploadedImages);
+    return uploadedImages;
 }
 
 },{"firebase/firestore":"cJafS","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","firebase/storage":"9dDUH"}],"9dDUH":[function(require,module,exports) {
