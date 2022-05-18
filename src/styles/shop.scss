@@ -1,13 +1,32 @@
 @import "nav";
+@import "button";
 
 body{
     background-image: "./img/Fondoweb.jpg";
 }
 
 .product{
-    width: 200px;
+    width: 300px;
     display: block;
     margin-bottom: 15px;
+
+    &__info{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        height: 200px;
+        position: relative;
+        &--visual{
+            position: absolute;
+            padding: 5%;
+            background: #FFFFFF;
+            box-shadow: 0px 10.3145px 10.3145px rgba(0, 0, 0, 0.25);
+            border-radius: 18.0503px;
+            top: -50%;
+            left: 5%;
+            width: 70%;
+        }
+    }
 }
 
 .product__image{
@@ -23,7 +42,27 @@ body{
 
 .sProduct{
     display: flex;
+    margin: 4%;
     flex-wrap: wrap;
     justify-content: space-between ;
+
+}
+
+.filter{
+    margin: 4%;
+
+    &__options{
+        display: flex;
+        flex-direction: row;
+        height: 10vh;
+        justify-content: space-between;
+    }
+
+    &__option{
+        width: 15%;
+        height: 100%;
+        border-radius: 6px;
+    }
+
 
 }

@@ -529,7 +529,10 @@ function hmrAcceptRun(bundle, id) {
 var _general = require("./general");
 var _firestore = require("firebase/firestore");
 var _products = require("./functions/products");
+var _localCart = require("./functions/localCart");
+var _auth = require("firebase/auth");
 const productSection = document.getElementById("products");
+let cart = [];
 async function loadProducts() {
     const firebaseProducts = await _products.getProducts(_general.db);
     firebaseProducts.forEach((product)=>{
@@ -545,17 +548,34 @@ function renderProducts(item) {
     product.innerHTML = `
             <img src="${coverImage}" class="product__image">
               <div class="product__info">
-                  <h2 class="product__name">${item.name}</h2>
-                  <h3 class="product__description">${item.description}</h3>
-                  <h2 class="product__price">$ ${item.price}</h2>
-                  <button class="product__cart">Add</button>
+                <div class="product__info--visual">
+                <h2 class="product__name">${item.name}</h2>
+                <h3 class="product__description">${item.description}</h3>
+                <h2 class="product__price">$ ${item.price}</h2>
+                <button class="product__cart button button--1">Add</button>
+                </div>
+                  
               </div>
     `;
     productSection.appendChild(product);
+    const product__cart = document.querySelector(".product__cart");
+    product__cart.addEventListener("click", (e)=>{
+        console.log("click desde store");
+        const newItem = {
+            ...product,
+            size: "Personal"
+        };
+        cart.push(newItem);
+        _localCart.addProductToCart(cart);
+        window.location.href = "cart.html";
+    });
 }
-loadProducts();
+_auth.onAuthStateChanged(_general.auth, async (user)=>{
+    loadProducts();
+    cart = _localCart.getMyLocalCart();
+});
 
-},{"firebase/firestore":"cJafS","./functions/products":"6M4Yj","./general":"dFv9L"}],"cJafS":[function(require,module,exports) {
+},{"firebase/firestore":"cJafS","./functions/products":"6M4Yj","./general":"dFv9L","./functions/localCart":"66BDy","firebase/auth":"drt1f"}],"cJafS":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _firestore = require("@firebase/firestore");
@@ -36615,6 +36635,30 @@ function registerStorage() {
 }
 registerStorage();
 
-},{"@firebase/app":"3AcPV","@firebase/util":"ePiK6","@firebase/component":"bi1VB","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["7yEow","kYXX8"], "kYXX8", "parcelRequire7390")
+},{"@firebase/app":"3AcPV","@firebase/util":"ePiK6","@firebase/component":"bi1VB","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"66BDy":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "addProductToCart", ()=>addProductToCart
+);
+parcelHelpers.export(exports, "getMyLocalCart", ()=>getMyLocalCart
+);
+parcelHelpers.export(exports, "currencyFormat", ()=>currencyFormat
+);
+async function addProductToCart(cart) {
+    localStorage.setItem("cart", JSON.stringify(cart));
+}
+function getMyLocalCart() {
+    const myCart = localStorage.getItem("cart");
+    return myCart ? JSON.parse(myCart) : [];
+}
+function currencyFormat(price) {
+    return new Intl.NumberFormat("es-CO", {
+        style: 'currency',
+        currency: 'COP',
+        minimumFractionDigits: 0
+    }).format(price);
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["7yEow","kYXX8"], "kYXX8", "parcelRequire7390")
 
 //# sourceMappingURL=shop.33fc2b18.js.map
