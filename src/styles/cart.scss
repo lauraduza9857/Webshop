@@ -46,3 +46,17 @@
         justify-content: space-between;
     }
 }
+
+.forms{
+    margin: 12%;
+    display: flex;
+    flex-direction: column;
+    
+     > *{
+         margin-bottom: 16px;
+    }
+}
+
+.cart__banner{
+    margin: 12%;
+}

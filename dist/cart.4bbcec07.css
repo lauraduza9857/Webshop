@@ -105,4 +105,18 @@ nav section a {
   display: flex;
 }
 
+.forms {
+  flex-direction: column;
+  margin: 12%;
+  display: flex;
+}
+
+.forms > * {
+  margin-bottom: 16px;
+}
+
+.cart__banner {
+  margin: 12%;
+}
+
 /*# sourceMappingURL=cart.4bbcec07.css.map */
