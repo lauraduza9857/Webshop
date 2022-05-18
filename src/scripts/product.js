@@ -33,11 +33,10 @@ function renderProduct(product) {
     productAssetsSection.appendChild(mainImage);
 
     productInfoSection.innerHTML = `
-    <h1 class="product__name">${product.name}</h1>
-    <p class="product__review">${product.category}</p>
-    <p class="product__review">${product.review}</p>
-    <h3 class="product__price">${product.price}</h3>
-    <p class="product__description">${product.description}</p>
+    <h1 id="product__name">${product.name}</h1>
+    <p id="product__review">${product.category}</p>
+    <h3 id="product__price">${product.price}</h3>
+    <p id="product__description">${product.description}</p>
     `
 }
 
