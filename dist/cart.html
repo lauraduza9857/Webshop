@@ -8,50 +8,56 @@
     <link rel="stylesheet" href="/cart.4bbcec07.css">
 </head>
 <body>
+
+    <nav>
+        <section>
+                <img src="/Logo.f876a1b8.png" alt="logo_secretFlavor">
+                <ul>
+                    <li><a href="/login.html">Sign in</a></li>
+                    <li><a href="/login.html">Sign up</a></li>
+                </ul>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Abut us</a></li>
+                    <li><a href="#">Menu</a></li>
+                    <li><a href="/shop.html">Products</a></li>
+                    <li><a href="#">Shopping</a></li>
+                </ul>
+            
+        </section>
+        <section class="nav__section--1">
+            <a href="/cart.html"><img src="/Carrito.bf6a21a0.png" alt="cart"></a>
+        </section>
+    </nav>
  
     <section class="cart__banner">
-        <h1>Checkout</h1>
+        <h1>Shopping cart</h1>
     </section>
-    <ul class="cart">
-        <li class="product">
-            <h2>Product</h2>
-            <h2>Price</h2>
-            <h2>Quantity</h2>
-            <h2>Total</h2>
-        </li>
 
-    </ul>
     <ul class="cart" id="cart">
     </ul>
+
+    <button class="addmore button">Add more products</button>
     <div class="money">
-        <p>Total:</p>
-        <div id="total"></div>
+        <div class="money__options">
+            <p>Sub total:</p>
+            <div id="total"></div>
+        </div>
+        <div class="money__options">
+            <p>Delivery fees</p>
+            <div id="delivery">500</div>
+        </div>
+        <div class="money__options">
+            <p>Total</p>
+            <div id="total"></div>
+        </div>
+
     </div>
     
 
+
     <form class="forms" id="paymentForm">
-        <label for="">Name</label>
-        <input type="text" placeholder="Name" name="name">
-        <label for="">Lastname</label>
-        <input type="text" placeholder="Lastname" name="lastname">
-        <label for="">Country</label>
-        <select id="country" name="country">
-            <option>country</option>
-            <option value="AR">Argentina</option>
-            <option value="BO">Bolivia</option>
-            <option value="BR">Brazil</option>
-            <option value="CL">Chile</option>
-            <option value="CO">Colombia</option>
-            <option value="EC">Ecuador</option>
-            <option value="FK">Falkland Islands (Malvinas)</option>
-            <option value="GF">French Guiana</option>
-            <option value="GY">Guyana</option>
-            <option value="PY">Paraguay</option>
-            <option value="PE">Peru</option>
-            <option value="SR">Suriname</option>
-            <option value="UY">Uruguay</option>
-            <option value="VE">Venezuela</option>
-        </select>
+
         <label for="">Town</label>
         <input type="text" placeholder="Town" name="town">
         <label for="">Address</label>

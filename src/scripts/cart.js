@@ -44,11 +44,20 @@ function renderProduct(product) {
     const productCart = document.createElement("li");
     productCart.className = "product";
     productCart.innerHTML = `
-    <button class="product__delete">X</button>
-    <img src="${product.images[0]}" class="product__image">
-    <h2 class="product__name">${product.name}</h2>
 
-    <h3 class="product__price">${(product.price)}</h3>
+    <img src="${product.images[0]}" class="product__image">
+    <div class="product__info">
+    <h2 class="product__name"><strong>Name:</strong> ${product.name}</h2>
+    <p class="product__size"><strong>Size:</strong> ${product.size}<p>
+    <h3 class="product__price">Total: ${(product.price)}</h3>
+    </div>
+    <div class="product__options">
+    <button class="product__edit">Edit</button>
+    <button class="product__delete">X</button>
+    </div>
+    
+    
+    
     
     `;
 
