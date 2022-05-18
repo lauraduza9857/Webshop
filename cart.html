@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My cart</title>
+    <link rel="stylesheet" href="./src/styles/cart.scss">
+</head>
+<body>
+ 
+    <section class="cart__banner">
+        <h1>Checkout</h1>
+    </section>
+    <ul class="cart">
+        <li class="product">
+            <h2>Product</h2>
+            <h2>Price</h2>
+            <h2>Quantity</h2>
+            <h2>Total</h2>
+        </li>
+
+    </ul>
+    <ul class="cart" id="cart">
+    </ul>
+    <div class="money">
+        <p>Total:</p>
+        <div id="total"></div>
+    </div>
+    
+
+    <form class="forms" id="paymentForm">
+        <label for="">Name</label>
+        <input type="text" placeholder="Name" name="name">
+        <label for="">Lastname</label>
+        <input type="text" placeholder="Lastname" name="lastname">
+        <label for="">Country</label>
+        <select id="country" name="country">
+            <option>country</option>
+            <option value="AR">Argentina</option>
+            <option value="BO">Bolivia</option>
+            <option value="BR">Brazil</option>
+            <option value="CL">Chile</option>
+            <option value="CO">Colombia</option>
+            <option value="EC">Ecuador</option>
+            <option value="FK">Falkland Islands (Malvinas)</option>
+            <option value="GF">French Guiana</option>
+            <option value="GY">Guyana</option>
+            <option value="PY">Paraguay</option>
+            <option value="PE">Peru</option>
+            <option value="SR">Suriname</option>
+            <option value="UY">Uruguay</option>
+            <option value="VE">Venezuela</option>
+        </select>
+        <label for="">Town</label>
+        <input type="text" placeholder="Town" name="town">
+        <label for="">Address</label>
+        <input type="text" placeholder="Address" name="address">
+        <label for="">Payment Methods</label>
+        <select name="card" id="card">
+            <option>Options</option>
+            <option value="VISA">Visa</option>
+            <option value="MASTERCARD">MasterCard</option>
+        </select>
+        <input type="number" placeholder="Card number" name="card_number">
+
+
+        <input type="submit" class="button--2" value="Send order">
+    </form>
+
+
+
+
+
+    <script src="./src/scripts/cart.js" type="module"></script>
+</body>
+</html>

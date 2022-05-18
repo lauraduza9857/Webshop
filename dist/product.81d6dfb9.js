@@ -531,8 +531,10 @@ var _getProduct = require("./functions/getProduct");
 var _getProductDefault = parcelHelpers.interopDefault(_getProduct);
 var _general = require("./general");
 var _auth = require("firebase/auth");
+var _localCart = require("./functions/localCart");
 const productInfoSection = document.getElementById("product__info");
 const productAssetsSection = document.getElementById("product__assets");
+let cart = [];
 function getParam(param) {
     const url = window.location.search;
     const searchParams = new URLSearchParams(url);
@@ -559,13 +561,34 @@ function renderProduct(product) {
     <p id="product__review">${product.category}</p>
     <h3 id="product__price">${product.price}</h3>
     <p id="product__description">${product.description}</p>
+    <form id="product__size">
+        <input class="size__check" type="checkbox" id="personal" name="vehicle1" value="personal">
+        <label for="vehicle1"> Personal</label><br>
+        <input class="size__check" type="checkbox" id="couple" name="vehicle2" value="couple">
+        <label for="vehicle2"> Couple</label><br>
+        <input class="size__check" type="checkbox" id="family" name="vehicle3" value="family">
+        <label for="vehicle3"> Family</label><br><br>
+        <input type="submit" value="Añadir Producto">
+</form>
     `;
+    const product__size = document.querySelector("#product__size");
+    product__size.addEventListener("submit", async (e)=>{
+        e.preventDefault();
+        const newItem = {
+            ...product,
+            size: "Personal"
+        };
+        cart.push(newItem);
+        _localCart.addProductToCart(cart);
+        window.location.href = "cart.html";
+    });
 }
 _auth.onAuthStateChanged(_general.auth, async (user)=>{
     loadProduct();
+    cart = _localCart.getMyLocalCart();
 });
 
-},{"./functions/getProduct":"iYh4a","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","firebase/auth":"drt1f","./general":"dFv9L"}],"iYh4a":[function(require,module,exports) {
+},{"./functions/getProduct":"iYh4a","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","firebase/auth":"drt1f","./general":"dFv9L","./functions/localCart":"66BDy"}],"iYh4a":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _general = require("./../general");
@@ -36620,6 +36643,30 @@ function registerStorage() {
 }
 registerStorage();
 
-},{"@firebase/app":"3AcPV","@firebase/util":"ePiK6","@firebase/component":"bi1VB","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["i4PLm","7Um7J"], "7Um7J", "parcelRequire7390")
+},{"@firebase/app":"3AcPV","@firebase/util":"ePiK6","@firebase/component":"bi1VB","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"66BDy":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "addProductToCart", ()=>addProductToCart
+);
+parcelHelpers.export(exports, "getMyLocalCart", ()=>getMyLocalCart
+);
+parcelHelpers.export(exports, "currencyFormat", ()=>currencyFormat
+);
+async function addProductToCart(cart) {
+    localStorage.setItem("cart", JSON.stringify(cart));
+}
+function getMyLocalCart() {
+    const myCart = localStorage.getItem("cart");
+    return myCart ? JSON.parse(myCart) : [];
+}
+function currencyFormat(price) {
+    return new Intl.NumberFormat("es-CO", {
+        style: 'currency',
+        currency: 'COP',
+        minimumFractionDigits: 0
+    }).format(price);
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["i4PLm","7Um7J"], "7Um7J", "parcelRequire7390")
 
 //# sourceMappingURL=product.81d6dfb9.js.map
